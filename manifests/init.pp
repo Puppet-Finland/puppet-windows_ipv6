@@ -17,11 +17,11 @@
 # https://support.microsoft.com/en-us/kb/929852
 class windows_ipv6
 (
-  String $disabled_components_value = '0x20',
+  String $disabled_components_value = '32',
 )
 {
 
-  unless $disabled_components_value in [ '0', '0xff', '0x20', '0x10', '0x01', '0x11' ] {
+  unless $disabled_components_value in [ '0', '0xff', '0x20', '0x10', '0x01', '0x11', '32' ] {
     fail("Invalid value ${disabled_components_value} for the DisabledComponents key")
   }
 
@@ -32,6 +32,7 @@ class windows_ipv6
     dsc_key       => $reg_basepath,
     dsc_valuename => 'DisabledComponents',
     dsc_valuedata => $disabled_components_value,
+    dsc_valuetype => 'Dword',
   }
 
   reboot { 'After IPv6 settings':

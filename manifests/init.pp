@@ -32,5 +32,10 @@ class windows_ipv6
     dsc_key       => $reg_basepath,
     dsc_valuename => 'DisabledComponents',
     dsc_valuedata => $disabled_components_value,
+    dsc_valuetype => 'Dword',
+  }
+
+  reboot { 'After IPv6 settings':
+    subscribe => Dsc_registry['Manage IPv6 settings'],
   }
 }

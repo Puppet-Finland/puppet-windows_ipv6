@@ -23,7 +23,7 @@ class windows_ipv6
 {
 
   unless $disabled_components_value in [ '0', '255', '32', '16', '1', '17' ] {
-    fail("Invalid value ${disabled_components_value} for the DisabledComponents key")
+    fail("Invalid valuedata ${disabled_components_value} for the DisabledComponents valuename")
   }
 
   $reg_basepath = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters'
